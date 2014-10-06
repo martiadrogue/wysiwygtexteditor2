@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WYSIWYG Editor</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- http://www.barneyparker.com/world-simplest-html5-wysisyg-inline-editor/ -->
+</head>
+<body>
+  <div class="content">
+    <header>
+      <input type="text" name="" id="" maxlength="128" >
+    </header>
+
+    <nav>
+      <div id="toolbar" class="hidde">
+        <a data-role="bold" href="javascript:void(0)"><i class="fa fa-bold"></i></a>
+        <a data-role="italic" href="javascript:void(0)"><i class="fa fa-italic"></i></a>
+        <a data-role="underline" href="javascript:void(0)"><i class="fa fa-underline"></i></a>
+        <a data-role="strikeThrough" href="javascript:void(0)"><i class="fa fa-strikethrough"></i></a>
+        <a data-role="indent" href="javascript:void(0)"><i class="fa fa-indent"></i></a>
+        <a data-role="outdent" href="javascript:void(0)"><i class="fa fa-outdent"></i></a>
+        <a data-role="insertUnorderedList" href="javascript:void(0)"><i class="fa fa-list-ul"></i></a>
+        <a data-role="insertOrderedList" href="javascript:void(0)"><i class="fa fa-list-ol"></i></a>
+        <a data-role="subscript" href="javascript:void(0)"><i class="fa fa-subscript"></i></a>
+        <a data-role="superscript" href="javascript:void(0)"><i class="fa fa-superscript"></i></a>
+      </div>
+    </nav>
+    <article id="editor" contenteditable="true"></article>
+    <textarea name="output" id="output"></textarea>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

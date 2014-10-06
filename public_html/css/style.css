@@ -1,0 +1,93 @@
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.content {
+  width: 980px;
+  margin: 0 auto;
+}
+.content > nav {
+  width: inherit;
+}
+#toolbar {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: inherit;
+  position: fixed;
+  top: 0;
+  text-align:center;
+  padding:5px;
+  visibility:visible;
+  opacity:1;
+  -webkit-transition: visibility 0s linear, 0.2s, opacity 0.2s linear;
+  -o-transition: visibility 0s linear, 0.2s, opacity 0.2s linear;
+  transition: visibility 0s linear, 0.2s, opacity 0.2s linear;
+}
+#toolbar.hidden {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 0s linear, 0.2s, opacity 0.2s linear;
+  -o-transition: visibility 0s linear, 0.2s, opacity 0.2s linear;
+  transition: visibility 0s linear, 0.2s, opacity 0.2s linear;
+}
+#toolbar a {
+  font-size: 1.5rem;
+  color:#151515;
+  padding:10px;
+  width: 50px;
+  height: 50px;
+  float: left;
+  outline: none;
+}
+#toolbar a:hover {
+  color:#313131;
+  background-color: rgba(255, 255, 0, 0.35);
+}
+#toolbar a:active,
+#toolbar a.active {
+  color:#313131;
+  background-color: rgba(255, 247, 0, 0.50);
+}
+
+#toolbar a i {
+  vertical-align: baseline;
+}
+
+input[type="text"],
+#editor {
+  outline: none;
+  overflow:auto;
+  padding:.6rem;
+  font-size: 1.4rem;
+}
+input[type="text"] {
+  width: 70%;
+  border: none;
+  border-bottom:3px dashed silver;
+  margin: 70px 0 20px 0;
+}
+#editor {
+  border:3px dashed silver;
+  border-radius:5px;
+  resize:vertical;
+  min-height:250px;
+  line-height: 1.4;
+  -ms-word-break: break-all;
+  word-break: break-all;
+}
+#editor p:first-child {
+  margin-top: 0;
+}
+
+#output {
+  display: none;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration:none;
+}
