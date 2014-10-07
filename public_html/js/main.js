@@ -50,21 +50,21 @@ function update_output() {
 }
 
 function p(t){
-    t = t.trim();
-    return (t.length > 0 ? '<p>' + t.replace(/[\r\n]+/,'</p><p>') + '</p>' : null);
+  t = t.trim();
+  return (t.length > 0 ? '<p>' + t.replace(/[\r\n]+/,'</p><p>') + '</p>' : null);
 }
 
 function insertTextAtCursor(text) {
-    var sel, range;
-    sel = window.getSelection();
-    range = sel.getRangeAt(0);
-    range.deleteContents();
-    var textNode = document.createTextNode(text);
+  var sel, range;
+  sel = window.getSelection();
+  range = sel.getRangeAt(0);
+  range.deleteContents();
+  var textNode = document.createTextNode(text);
 
-    range.insertNode(textNode);
-    range.setStartAfter(textNode);
-    sel.removeAllRanges();
-    sel.addRange(range);
+  range.insertNode(textNode);
+  range.setStartAfter(textNode);
+  sel.removeAllRanges();
+  sel.addRange(range);
 }
 
 $('article[contenteditable="true"]').on('drop',function(e) {
