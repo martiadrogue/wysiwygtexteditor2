@@ -92,38 +92,13 @@ $('article[contenteditable="true"]').on('drop',function(e) {
 // http://www.impressivewebs.com/animate-display-block-none/
 
 $('article[contenteditable="true"]').mouseup(function() {
-  var sel = getSelection().toString();
-
-  if(sel!=''){
+  setTimeout( function() {
     var controls = $('#toolbar');
-    controls.removeClass('hidden');
-
-    return false;
-  }
-});
-
-$(this).mouseup(function(event) {
-  var target = $(event.target);
-  if (target.is("#toolbar > a > i.fa")) {
-    target = $("#toolbar");
-  } else if (target.is("#toolbar > a")) {
-    target = $("#toolbar");
-  }
-  if(target[0] != $("#toolbar")[0]) {
-    var controls = $('#toolbar');
-    controls.addClass('hidden');
-  }
-});
-
-function getAncestorWithTagName(node, tagNames) {
-  for (i = 0; i < tagNames.length; i++) {
-    tagName = tagNames[i].toUpperCase();
-    while (node) {
-      if (node.nodeType == 1 && node.tagName.toUpperCase() == tagName) {
-        return node;
-      }
-      node = node.parentNode;
+    if(!sel.isCollapsed){
+      controls.removeClass('hidden');
+    } else {
+      controls.addClass('hidden');
     }
-  }
-  return null;
-}
+  }, 1);
+  var sel = getSelection();
+});

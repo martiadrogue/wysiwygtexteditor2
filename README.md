@@ -15,6 +15,3 @@ Pel que fa el contingut del porta-papers, les etiquetes són ignorades, això vo
 dir que els salts de línia desapareixen. En el Firefox, les etiquetes
 desapareixen, en els navegadors basats amb webkit les etiquetes es converteixen
 en caràcters del HTML Enteties.
-
-El comportament de les seleccions també varia, si es prem el botó esquerre del
-ratolí sobre un text seleccionat aquest no es desselecciona.
