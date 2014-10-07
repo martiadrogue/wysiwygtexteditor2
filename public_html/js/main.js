@@ -76,14 +76,21 @@ $('article[contenteditable="true"]').on('drop',function(e) {
   $(this).get(0).innerHTML = text;
 });
 
-$('article[contenteditable="true"]').mouseup(function() {
+$(this).mouseup(function() {
   setTimeout( function() {
-    var controls = $('#toolbar');
-    if(!sel.isCollapsed){
-      controls.removeClass('hidden');
-    } else {
-      controls.addClass('hidden');
+    var sel = getSelection();
+    console.log(sel.isCollapsed);
+    if(sel.isCollapsed){
+      $('#toolbar').addClass('hidden');
     }
   }, 1);
-  var sel = getSelection();
+});
+
+$('article[contenteditable="true"]').mouseup(function() {
+  setTimeout( function() {
+    var sel = getSelection();
+    if(!sel.isCollapsed){
+      $('#toolbar').removeClass('hidden');
+    }
+  }, 1);
 });
