@@ -10,7 +10,12 @@ $('#toolbar a').click(function(e) {
     case 'p':
       document.execCommand('formatBlock', false, role);
       break;
-
+    case 'InsertUnorderedList':
+      document.execCommand(role, false, 'newUL');
+      break;
+    case 'InsertOrderedList':
+      document.execCommand(role, false, 'newOL');
+      break;
     default:
       document.execCommand(role, false, null);
       break;
@@ -27,22 +32,6 @@ $('article[contenteditable="true"]').keydown(function(e) {
   // TODO: If is the first time and key Enters never down needs to add a tag <p>
   if (e.which == 13) {
     document.execCommand('formatBlock', false, 'p');
-    //make the br replace selection
-    var range = window.getSelection().getRangeAt(0);
-    range.deleteContents();
-    range.insertNode(docFragment);
-    //create a new range
-    range = document.createRange();
-    range.setStartAfter(newEle);
-    range.collapse(true);
-    //make the cursor there
-    var sel = window.getSelection();
-    sel.removeAllRanges();
-    sel.addRange(range);
-
-    return false;
-  } else {
-    return true;
   }
 });
 
@@ -82,14 +71,10 @@ $('article[contenteditable="true"]').on('drop',function(e) {
   e.preventDefault();
   var dt = e.originalEvent.dataTransfer;
   var text = dt.getData('text/plain');
-  var html = dt.getData('text/html')
+  var html = dt.getData('text/html');
 
   $(this).get(0).innerHTML = text;
 });
-// toolbar
-// http://stackoverflow.com/questions/9445105/position-div-on-top-layer-like-popup-tooltip-at-the-end-of-selected-text?lq=1
-// http://stackoverflow.com/questions/10390010/jquery-click-is-triggering-when-selecting-highlighting-text
-// http://www.impressivewebs.com/animate-display-block-none/
 
 $('article[contenteditable="true"]').mouseup(function() {
   setTimeout( function() {
