@@ -66,6 +66,7 @@ h1[contenteditable="true"] {
   width: 70%;
   height: 50px;
   overflow: hidden;
+  white-space: nowrap;
   font-size: 1.7rem;
   border: none;
   border-bottom:3px dashed silver;

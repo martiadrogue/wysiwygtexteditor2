@@ -90,18 +90,26 @@ $('[contenteditable="true"]').on('drop',function(e) {
   $(this).get(0).innerHTML = text;
 });
 
-$(this).mouseup(function() {
-  setTimeout( function() {
-    $('#toolbar').addClass('hidden');
-  }, 1);
+$(this).mouseup(function(e) {
+  var nodeName = e.target.nodeName;
+  if(nodeName != 'ARTICLE') {
+    setTimeout( function() {
+        $('#toolbar').addClass('hidden');
+    }, 1);
+  }
+});
+
+$('#toolbar').mouseup(function(e) {
+  return false;
 });
 
 $('article[contenteditable="true"]').mouseup(function() {
-  var sel = getSelection();
-  if(!sel.isCollapsed){
-    setTimeout( function() {
+  setTimeout( function() {
+    var sel = getSelection();
+    if(!sel.isCollapsed){
       $('#toolbar').removeClass('hidden');
-    }, 1);
-    return false;
-  }
+    } else {
+      $('#toolbar').addClass('hidden');
+    }
+  }, 1);
 });
