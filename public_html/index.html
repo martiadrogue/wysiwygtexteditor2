@@ -11,10 +11,6 @@
 </head>
 <body>
   <div class="content">
-    <header>
-      <input type="text" name="" id="" maxlength="128" >
-    </header>
-
     <nav>
       <div id="toolbar" class="hidde">
         <a data-role="bold" href="javascript:void(0)"><i class="fa fa-bold"></i></a>
@@ -29,8 +25,16 @@
         <a data-role="superscript" href="javascript:void(0)"><i class="fa fa-superscript"></i></a>
       </div>
     </nav>
-    <article id="editor" contenteditable="true"></article>
-    <textarea name="output" id="output"></textarea>
+
+    <section>
+      <header>
+        <h1 contenteditable="true"></h1>
+        <input type="text" name="" id="" maxlength="128" >
+      </header>
+
+      <article id="editor" contenteditable="true"></article>
+      <textarea name="output" id="output"></textarea>
+    </section>
   </div>
 
   <script src="js/main.js"></script>

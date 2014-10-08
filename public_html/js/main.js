@@ -28,6 +28,10 @@ $('#editor').bind('blur keyup paste copy cut mouseup', function(e) {
   update_output();
 });
 
+$('h1[contenteditable="true"]').bind('blur keyup paste copy cut mouseup', function(e) {
+  update_title();
+});
+
 $('article[contenteditable="true"]').keydown(function(e) {
   // TODO: If is the first time and key Enters never down needs to add a tag <p>
   if (e.which == 13) {
@@ -35,10 +39,17 @@ $('article[contenteditable="true"]').keydown(function(e) {
   }
 });
 
+$('h1[contenteditable="true"]').keydown(function(e) {
+  // TODO: If is the first time and key Enters never down needs to add a tag <p>
+  if (e.which == 13) {
+    return false;
+  }
+});
+
 /**
  * http://www.albertmartin.de/blog/code.php/20/plain-text-paste-with-javascript
  */
-$('article[contenteditable="true"]').bind('paste',function(e) {
+$('[contenteditable="true"]').bind('paste',function(e) {
   // get content before paste
   var before = document.getElementById('editor').innerHTML;
   setTimeout(function(){
@@ -66,7 +77,11 @@ function update_output() {
   $('#output').val($('#editor').html());
 }
 
-$('article[contenteditable="true"]').on('drop',function(e) {
+function update_title() {
+  $('input[type="text"]').val($('h1[contenteditable="true"]').html());
+}
+
+$('[contenteditable="true"]').on('drop',function(e) {
   e.preventDefault();
   var dt = e.originalEvent.dataTransfer;
   var text = dt.getData('text/plain');
@@ -77,18 +92,16 @@ $('article[contenteditable="true"]').on('drop',function(e) {
 
 $(this).mouseup(function() {
   setTimeout( function() {
-    var sel = getSelection();
-    if(sel.isCollapsed){
-      $('#toolbar').addClass('hidden');
-    }
+    $('#toolbar').addClass('hidden');
   }, 1);
 });
 
 $('article[contenteditable="true"]').mouseup(function() {
-  setTimeout( function() {
-    var sel = getSelection();
-    if(!sel.isCollapsed){
+  var sel = getSelection();
+  if(!sel.isCollapsed){
+    setTimeout( function() {
       $('#toolbar').removeClass('hidden');
-    }
-  }, 1);
+    }, 1);
+    return false;
+  }
 });

@@ -55,15 +55,17 @@
   vertical-align: baseline;
 }
 
-input[type="text"],
+h1[contenteditable="true"],
 #editor {
   outline: none;
   overflow:auto;
   padding:.6rem;
   font-size: 1.4rem;
 }
-input[type="text"] {
+h1[contenteditable="true"] {
   width: 70%;
+  font-size: 1.7rem;
+  height: 50px;
   border: none;
   border-bottom:3px dashed silver;
   margin: 70px 0 20px 0;
@@ -81,6 +83,7 @@ input[type="text"] {
   margin-top: 0;
 }
 
+input[type="text"],
 #output {
   display: none;
 }
