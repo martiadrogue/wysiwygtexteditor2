@@ -65,7 +65,7 @@ h1[contenteditable="true"],
 h1[contenteditable="true"] {
   width: 70%;
   font-size: 1.7rem;
-  height: 50px;
+  display: block;
   border: none;
   border-bottom:3px dashed silver;
   margin: 70px 0 20px 0;
