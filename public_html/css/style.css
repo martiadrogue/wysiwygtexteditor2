@@ -76,8 +76,8 @@ h1[contenteditable="true"] {
   resize:vertical;
   min-height:250px;
   line-height: 1.4;
-  -ms-word-break: break-all;
-  word-break: break-all;
+  -ms-word-break: keep-all;
+  word-break: keep-all;
 }
 #editor p:first-child {
   margin-top: 0;
