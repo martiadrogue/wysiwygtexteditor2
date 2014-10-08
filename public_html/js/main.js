@@ -38,33 +38,32 @@ $('article[contenteditable="true"]').keydown(function(e) {
 /**
  * http://www.albertmartin.de/blog/code.php/20/plain-text-paste-with-javascript
  */
-$('article[contenteditable="true"]').on('paste',function(e) {
-  var cp = e.originalEvent.clipboardData;
-  var text = cp.getData(cp.types[cp.types.length-1]);
-  insertTextAtCursor(text);
-  return false;
+$('article[contenteditable="true"]').bind('paste',function(e) {
+  // get content before paste
+  var before = document.getElementById('editor').innerHTML;
+  setTimeout(function(){
+    // get content after paste by a 100ms delay
+    var after = document.getElementById('editor').innerHTML;
+    // find the start and end position where the two differ
+    var pos1 = -1;
+    var pos2 = -1;
+    for (var i=0; i<after.length; i++) {
+      if (pos1 == -1 && before.substr(i, 1) != after.substr(i, 1)) pos1 = i;
+      if (pos2 == -1 && before.substr(before.length-i-1, 1) != after.substr(after.length-i-1, 1)) pos2 = i;
+    }
+    // the difference = pasted string with HTML:
+    var pasted = after.substr(pos1, after.length-pos2-pos1);
+    // strip the tags:
+    var replace = pasted.replace(/<[^>]+>/g, '');
+    // build clean content:
+    var replaced = after.substr(0, pos1)+replace+after.substr(pos1+pasted.length);
+    // replace the HTML mess with the plain content
+    document.getElementById('editor').innerHTML = replaced;
+  }, 100);
 });
 
 function update_output() {
   $('#output').val($('#editor').html());
-}
-
-function p(t){
-  t = t.trim();
-  return (t.length > 0 ? '<p>' + t.replace(/[\r\n]+/,'</p><p>') + '</p>' : null);
-}
-
-function insertTextAtCursor(text) {
-  var sel, range;
-  sel = window.getSelection();
-  range = sel.getRangeAt(0);
-  range.deleteContents();
-  var textNode = document.createTextNode(text);
-
-  range.insertNode(textNode);
-  range.setStartAfter(textNode);
-  sel.removeAllRanges();
-  sel.addRange(range);
 }
 
 $('article[contenteditable="true"]').on('drop',function(e) {
@@ -79,7 +78,6 @@ $('article[contenteditable="true"]').on('drop',function(e) {
 $(this).mouseup(function() {
   setTimeout( function() {
     var sel = getSelection();
-    console.log(sel.isCollapsed);
     if(sel.isCollapsed){
       $('#toolbar').addClass('hidden');
     }
