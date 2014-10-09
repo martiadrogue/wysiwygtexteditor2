@@ -1,6 +1,5 @@
 
-WYSIWYG Text Editor
-===================
+# WYSIWYG Text Editor
 
 Un processador de text simple per navegadors web, ideal per a continguts de
 blocs i altres llocs web basats en articles. Prima la simplicitat, permet editar

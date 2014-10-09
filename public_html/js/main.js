@@ -24,6 +24,10 @@ $('#toolbar a').click(function(e) {
   update_output();
 });
 
+$('#toolbar a').mouseup(function(e) {
+  return false;
+});
+
 $('#editor').bind('blur keyup paste copy cut mouseup', function(e) {
   update_output();
 });
@@ -93,14 +97,8 @@ $('[contenteditable="true"]').on('drop',function(e) {
 $(this).mouseup(function(e) {
   var nodeName = e.target.nodeName;
   if(nodeName != 'ARTICLE') {
-    setTimeout( function() {
-        $('#toolbar').addClass('hidden');
-    }, 1);
+    $('#toolbar').addClass('hidden');
   }
-});
-
-$('#toolbar').mouseup(function(e) {
-  return false;
 });
 
 $('article[contenteditable="true"]').mouseup(function() {
