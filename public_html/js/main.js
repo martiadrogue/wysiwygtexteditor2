@@ -40,11 +40,14 @@ $('article[contenteditable="true"]').keydown(function(e) {
   // TODO: If is the first time and key Enters never down needs to add a tag <p>
   if (e.which == 13) {
     document.execCommand('formatBlock', false, 'p');
+  } else if (e.which >= 37 && e.which <= 40) {
+    if (e.shiftKey == true) {
+      switchToolbar();
+    }
   }
 });
 
 $('h1[contenteditable="true"]').keydown(function(e) {
-  // TODO: If is the first time and key Enters never down needs to add a tag <p>
   if (e.which == 13) {
     return false;
   }
@@ -102,6 +105,10 @@ $(this).mouseup(function(e) {
 });
 
 $('article[contenteditable="true"]').mouseup(function() {
+  switchToolbar();
+});
+
+function switchToolbar() {
   setTimeout( function() {
     var sel = getSelection();
     if(!sel.isCollapsed){
@@ -110,4 +117,4 @@ $('article[contenteditable="true"]').mouseup(function() {
       $('#toolbar').addClass('hidden');
     }
   }, 1);
-});
+}
