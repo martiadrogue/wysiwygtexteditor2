@@ -40,10 +40,8 @@ $('article[contenteditable="true"]').keydown(function(e) {
   // TODO: If is the first time and key Enters never down needs to add a tag <p>
   if (e.which == 13) {
     document.execCommand('formatBlock', false, 'p');
-  } else if (e.which >= 37 && e.which <= 40) {
-    if (e.shiftKey == true) {
-      switchToolbar();
-    }
+  } else {
+    switchToolbar(); 
   }
 });
 
