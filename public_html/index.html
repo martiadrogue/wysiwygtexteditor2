@@ -17,22 +17,24 @@
         <a data-role="italic" href="javascript:void(0)"><i class="fa fa-italic"></i></a>
         <a data-role="underline" href="javascript:void(0)"><i class="fa fa-underline"></i></a>
         <a data-role="strikeThrough" href="javascript:void(0)"><i class="fa fa-strikethrough"></i></a>
+        <a data-role="subscript" href="javascript:void(0)"><i class="fa fa-subscript"></i></a>
+        <a data-role="superscript" href="javascript:void(0)"><i class="fa fa-superscript"></i></a>
         <a data-role="indent" href="javascript:void(0)"><i class="fa fa-indent"></i></a>
         <a data-role="outdent" href="javascript:void(0)"><i class="fa fa-outdent"></i></a>
         <a data-role="InsertUnorderedList" href="javascript:void(0)"><i class="fa fa-list-ul"></i></a>
         <a data-role="InsertOrderedList" href="javascript:void(0)"><i class="fa fa-list-ol"></i></a>
-        <a data-role="subscript" href="javascript:void(0)"><i class="fa fa-subscript"></i></a>
-        <a data-role="superscript" href="javascript:void(0)"><i class="fa fa-superscript"></i></a>
+        <a data-role="link" href="javascript:void(0)"><i class="fa fa-link"></i></a>
+        <input id="link-box" type="text" placeholder="link" class="link-box" name="link" />
       </div>
     </nav>
 
     <section>
       <header>
-        <h1 contenteditable="true"></h1>
-        <input type="text" name="" id="" maxlength="128" >
+        <h1><div id="editor-title" class="rich-text-editor" contenteditable="true"></div></h1>
+        <input type="text" name="" id="title" maxlength="128" >
       </header>
 
-      <article id="editor" contenteditable="true"></article>
+      <article id="editor-body" class="rich-text-editor" contenteditable="true"></article>
       <textarea name="output" id="output"></textarea>
     </section>
   </div>

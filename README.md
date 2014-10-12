@@ -14,3 +14,5 @@ Pel que fa el contingut del porta-papers, s'enganxa com a text/plain, sense
 etiquetes ni estils, això significa sense salts de línia. El comportament del
 cursor varia entre navegadors, en chrome se situa al final del text enganxat, en
 Opera al principi d'aquest i en Firefox al principi del contingut editable.
+
+Article molt interessat sobre els processadors de text web: https://medium.com/medium-eng/why-contenteditable-is-terrible-122d8a40e480

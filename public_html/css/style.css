@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
 *,
 *:after,
 *:before {
@@ -32,14 +34,53 @@
   -o-transition: visibility 0s linear, 0.2s, opacity 0.2s linear;
   transition: visibility 0s linear, 0.2s, opacity 0.2s linear;
 }
-#toolbar a {
-  font-size: 1.5rem;
+#toolbar a,
+#toolbar input {
   color:#151515;
   padding:10px;
-  width: 50px;
   height: 50px;
   float: left;
   outline: none;
+  vertical-align: baseline;
+}
+#toolbar input {
+  width: 200px;
+  background-color: rgba(255, 247, 0, 0.50);
+  border: none;
+  font-size: 1rem;
+}
+
+#toolbar input:-ms-input-placeholder {
+  color: #999;
+  font-style: italic;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+}
+#toolbar input::-webkit-input-placeholder {
+  color: #999;
+  font-style: italic;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+}
+#toolbar input:-moz-placeholder {
+  color: #444;
+  font-style: italic;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+}
+#toolbar input::-moz-placeholder {
+  color: #444;
+  font-style: italic;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+}
+#toolbar a {
+  font-size: 1.5rem;
+  width: 50px;
 }
 #toolbar a:hover {
   color:#313131;
@@ -51,41 +92,57 @@
   background-color: rgba(255, 247, 0, 0.50);
 }
 
-#toolbar a i {
-  vertical-align: baseline;
-}
-
-h1[contenteditable="true"],
-#editor {
+.rich-text-editor {
   outline: none;
   overflow:auto;
   padding:.6rem;
-  font-size: 1.4rem;
-}
-h1[contenteditable="true"] {
-  width: 70%;
-  height: 50px;
-  overflow: hidden;
-  white-space: nowrap;
-  font-size: 1.7rem;
-  border: none;
-  border-bottom:3px dashed silver;
-  margin: 70px 0 20px 0;
-}
-#editor {
   border:3px dashed silver;
-  border-radius:5px;
   resize:vertical;
-  min-height:250px;
-  line-height: 1.4;
   -ms-word-break: keep-all;
   word-break: keep-all;
 }
-#editor p:first-child {
+h1 .rich-text-editor {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 500;
+  font-style: normal;
+  color: #000;
+  letter-spacing: -0.01em;
+  text-transform: capitalize;
+  width: inherit;
+  min-height: 50px;
+  overflow: hidden;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  margin: 70px 0 20px 0;
+  line-height: 1.2;
+}
+h1 .rich-text-editor br {
+  display: none;
+}
+h1 .rich-text-editor * {
+  display: inline;
+}
+article.rich-text-editor {
+  font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-style: normal;
+  color: #222;
+  letter-spacing: 0.01rem;
+  border-radius:5px;
+  min-height:250px;
+  line-height: 1.5;
+}
+.rich-text-editor p {
+  margin-bottom: 30px;
+}
+.rich-text-editor p:first-child {
   margin-top: 0;
 }
 
-input[type="text"],
+#title,
 #output {
   display: none;
 }
