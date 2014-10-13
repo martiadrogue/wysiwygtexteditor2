@@ -23,71 +23,79 @@
   padding:5px;
   visibility:visible;
   opacity:1;
-  -webkit-transition: visibility 0s linear, 0.2s, opacity 0.2s linear;
-  -o-transition: visibility 0s linear, 0.2s, opacity 0.2s linear;
-  transition: visibility 0s linear, 0.2s, opacity 0.2s linear;
+  -webkit-transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear;
+  -o-transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear;
+  transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear;
 }
 #toolbar.hidden {
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: visibility 0s linear, 0.2s, opacity 0.2s linear;
-  -o-transition: visibility 0s linear, 0.2s, opacity 0.2s linear;
-  transition: visibility 0s linear, 0.2s, opacity 0.2s linear;
+  top: -10px;
+  -webkit-transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear 0.1s;
+  -o-transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear 0.1s;
+  transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear 0.1s;
 }
 #toolbar a,
-#toolbar input {
+#toolbar input[type="text"] {
   color:#151515;
   padding:10px;
   height: 50px;
+  width: 50px;
+  font-size: 1.5rem;
   float: left;
   outline: none;
   vertical-align: baseline;
 }
-#toolbar input {
-  width: 200px;
+#toolbar input[type="text"] {
+  width: 100px;
+  opacity: 0;
   background-color: rgba(255, 247, 0, 0.50);
   border: none;
   font-size: 1rem;
+  -webkit-transition: opacity 0.2s, width 0.2s;
+  -o-transition: opacity 0.2s, width 0.2s;
+  transition: opacity 0.2s, width 0.2s;
 }
-
-#toolbar input:-ms-input-placeholder {
+#toolbar input[type=checkbox]:checked ~ input[type="text"] {
+  width: 200px;
+  opacity: 1;
+  -webkit-transition: opacity 0.2s, width 0.2s;
+  -o-transition: opacity 0.2s, width 0.2s;
+  transition: opacity 0.2s, width 0.2s;
+}
+#toolbar input[type="text"]:-ms-input-placeholder {
   color: #999;
   font-style: italic;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
   font-size: 1rem;
 }
-#toolbar input::-webkit-input-placeholder {
+#toolbar input[type="text"]::-webkit-input-placeholder {
   color: #999;
   font-style: italic;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
   font-size: 1rem;
 }
-#toolbar input:-moz-placeholder {
+#toolbar input[type="text"]:-moz-placeholder {
   color: #444;
   font-style: italic;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
   font-size: 1rem;
 }
-#toolbar input::-moz-placeholder {
+#toolbar input[type="text"]::-moz-placeholder {
   color: #444;
   font-style: italic;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
   font-size: 1rem;
-}
-#toolbar a {
-  font-size: 1.5rem;
-  width: 50px;
 }
 #toolbar a:hover {
   color:#313131;
   background-color: rgba(255, 255, 0, 0.35);
 }
-#toolbar a:active,
-#toolbar a.active {
+#toolbar a:active {
   color:#313131;
   background-color: rgba(255, 247, 0, 0.50);
 }

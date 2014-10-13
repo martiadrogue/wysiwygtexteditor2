@@ -16,6 +16,8 @@ $('#toolbar a').click(function(e) {
     case 'InsertOrderedList':
       document.execCommand(role, false, 'newOL');
       break;
+      case 'link':
+        break;
     default:
       document.execCommand(role, false, null);
       break;
