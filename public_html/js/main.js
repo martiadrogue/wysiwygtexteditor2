@@ -16,15 +16,44 @@ $('#toolbar a').click(function(e) {
     case 'InsertOrderedList':
       document.execCommand(role, false, 'newOL');
       break;
-      case 'link':
+      case 'CreateLink':
+        var linkUrl = prompt('Enter the URL fot this link: ', 'http://');
+        if (linkUrl != '') {
+          document.execCommand(role, false, linkUrl);
+        } else {
+          document.execCommand('UnLink', false, null);
+        }
         break;
     default:
       document.execCommand(role, false, null);
       break;
   }
-
   update_output();
+  $('article[contenteditable="true"]').focus();
+  return false;
 });
+
+$('#article-tools a').click(function(e) {
+  var role = $(this).data('role');
+  $('article[contenteditable="true"]').focus();
+  switch(role) {
+    case 'insertimage':
+      var imgSrc = prompt('Enter image location: ', '');
+      if (imageExists(imgSrc)) {
+        document.execCommand(role, false, imgSrc);
+      }
+      break;
+    case 'about':
+      alert();
+      break;
+    default:
+      break;
+  }
+  update_output();
+  $('article[contenteditable="true"]').focus();
+  return false;
+});
+
 
 $('#toolbar a').mouseup(function(e) {
   return false;
@@ -45,6 +74,22 @@ $('article[contenteditable="true"]').keydown(function(e) {
   } else {
     switchToolbar();
   }
+});
+
+$('article[contenteditable="true"]').focus(function() {
+  setTimeout( function() {
+    $("#article-tools a.tool-img").removeClass('disabled');
+  }, 100);
+});
+$('article[contenteditable="true"]').focusout(function() {
+  setTimeout( function() {
+    var hasFocus = $("#article-tools a.tool-img").is(":focus");
+    hasFocus = hasFocus || $("#article-tools a.tool-img i").is(":focus");
+    console.log(hasFocus);
+    if(!hasFocus) {
+      $("#article-tools a.tool-img").addClass('disabled');
+    }
+  }, 100);
 });
 
 $('div[contenteditable="true"]').keydown(function(e) {
@@ -122,4 +167,10 @@ function cleanAndPaste(id) {
     // replace the HTML mess with the plain content
     editor.innerHTML = replaced;
   }, 100);
+}
+
+function imageExists(url){
+  var img = new Image();
+  img.src = url;
+  return img.height != 0;
 }
