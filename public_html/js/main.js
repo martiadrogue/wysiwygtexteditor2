@@ -18,7 +18,7 @@ $('#toolbar a').click(function(e) {
       break;
       case 'CreateLink':
         var linkUrl = prompt('Enter the URL fot this link: ', 'http://');
-        if (linkUrl != '') {
+        if (linkUrl !== '') {
           document.execCommand(role, false, linkUrl);
         } else {
           document.execCommand('UnLink', false, null);
@@ -171,6 +171,15 @@ function cleanAndPaste(id) {
 
 function imageExists(url){
   var img = new Image();
+  img.onload = function() {
+    // code to set the src on success
+  };
+  img.onerror = function() {
+    alert("Path not accessible!");
+    return false;
+  };
   img.src = url;
-  return img.height != 0;
+  console.log("height img: " + img.height);
+
+  return true;
 }

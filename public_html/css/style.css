@@ -16,6 +16,7 @@
   width: inherit;
 }
 #toolbar {
+  background-color: #fff;
   background-color: rgba(255, 255, 255, 0.9);
   width: inherit;
   position: fixed;
@@ -25,6 +26,7 @@
   visibility:visible;
   opacity:1;
   -webkit-transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear;
+  -moz-transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear;
   -o-transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear;
   transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear;
 }
@@ -33,6 +35,7 @@
   opacity: 0;
   top: -10px;
   -webkit-transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear 0.1s;
+  -moz-transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear 0.1s;
   -o-transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear 0.1s;
   transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear 0.1s;
 }
@@ -42,12 +45,14 @@
   width: 50px;
   opacity: .2;
   -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
   -o-transition: opacity 0.2s;
   transition: opacity 0.2s;
 }
 #article-tools:hover {
   opacity: 1;
   -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
   -o-transition: opacity 0.2s;
   transition: opacity 0.2s;
 }
@@ -65,12 +70,14 @@
 #article-tools a:hover,
 #toolbar a:hover {
   color:#313131;
+  background-color: #fffb72;
   background-color: rgba(255, 255, 0, 0.35);
 }
 #article-tools a:active,
 #toolbar a:active {
   color:#313131;
-  background-color: rgba(255, 247, 0, 0.50);
+  background-color: #fff648;
+  background-color: rgba(255, 255, 0, 0.50);
 }
 #article-tools a.disabled,
 #toolbar a.disabled {
@@ -91,6 +98,7 @@
   padding:.6rem;
   border:3px dashed silver;
   resize:vertical;
+  -epub-word-break: keep-all;
   -ms-word-break: keep-all;
   word-break: keep-all;
 }
