@@ -39,9 +39,9 @@ $('#article-tools a').click(function(e) {
   switch(role) {
     case 'insertimage':
       var imgSrc = prompt('Enter image location: ', '');
-      if (imageExists(imgSrc)) {
-        document.execCommand(role, false, imgSrc);
-      }
+      imageExists(imgSrc);
+      document.execCommand(role, false, imgSrc);
+
       break;
     case 'about':
       alert();
@@ -176,10 +176,7 @@ function imageExists(url){
   };
   img.onerror = function() {
     alert("Path not accessible!");
-    return false;
   };
   img.src = url;
   console.log("height img: " + img.height);
-
-  return true;
 }
