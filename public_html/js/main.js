@@ -3,6 +3,10 @@ Big Thanks To:
 https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla#Executing_Commands
 */
 
+$( document ).ready(function(){
+  $('div[contenteditable="true"]').focus();
+});
+
 $('#toolbar a').click(function(e) {
   var role = $(this).data('role');
 
@@ -94,6 +98,7 @@ $('article[contenteditable="true"]').focusout(function() {
 
 $('div[contenteditable="true"]').keydown(function(e) {
   if (e.which == 13) {
+    $('article[contenteditable="true"]').focus();
     return false;
   }
 });
