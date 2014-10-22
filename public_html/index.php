@@ -7,3 +7,12 @@ if (isset($_POST['title'], $_POST['body'])) {
 
 $html = file_get_contents('index.html');
 echo $html;
+
+/**
+ * [foo description]
+ * @param  [type] $var [description]
+ * @return [type]      [description]
+ */
+function foo($var) {
+  return true;
+}

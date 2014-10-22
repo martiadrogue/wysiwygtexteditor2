@@ -1,5 +1,4 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
-
 *,
 *:after,
 *:before {
@@ -7,7 +6,6 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
 .content {
   width: 980px;
   margin: 0 auto;
@@ -21,10 +19,10 @@
   width: inherit;
   position: fixed;
   top: 0;
-  text-align:center;
-  padding:5px;
-  visibility:visible;
-  opacity:1;
+  text-align: center;
+  padding: 5px;
+  visibility: visible;
+  opacity: 1;
   -webkit-transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear;
   -moz-transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear;
   -o-transition: visibility 0s linear, 0.2s, opacity 0.2s linear, top 0.1s linear;
@@ -44,22 +42,22 @@
   left: 10px;
   width: 50px;
   opacity: .2;
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -o-transition: opacity 0.2s;
-  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 #article-tools:hover {
   opacity: 1;
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -o-transition: opacity 0.2s;
-  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 #article-tools a,
 #toolbar a {
-  color:#151515;
-  padding:10px;
+  color: #151515;
+  padding: 10px;
   height: 50px;
   width: 50px;
   font-size: 1.5rem;
@@ -69,13 +67,13 @@
 }
 #article-tools a:hover,
 #toolbar a:hover {
-  color:#313131;
+  color: #313131;
   background-color: #fffb72;
   background-color: rgba(255, 255, 0, 0.35);
 }
 #article-tools a:active,
 #toolbar a:active {
-  color:#313131;
+  color: #313131;
   background-color: #fff648;
   background-color: rgba(255, 255, 0, 0.50);
 }
@@ -94,10 +92,10 @@
 }
 .rich-text-editor {
   outline: none;
-  overflow:auto;
-  padding:.6rem;
-  border:3px dashed silver;
-  resize:vertical;
+  overflow: auto;
+  padding: .6rem;
+  border: 3px dashed silver;
+  resize: vertical;
   -epub-word-break: keep-all;
   -ms-word-break: keep-all;
   word-break: keep-all;
@@ -115,7 +113,7 @@ h1 .rich-text-editor {
   min-height: 50px;
   overflow: hidden;
   border-left: none;
-  border-top: none;
+  border-top: 0;
   border-right: none;
   margin: 70px 0 20px 0;
   line-height: 1.2;
@@ -127,14 +125,14 @@ h1 .rich-text-editor * {
   display: inline;
 }
 article.rich-text-editor {
-  font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1.4rem;
   font-weight: 400;
   font-style: normal;
   color: #222;
   letter-spacing: 0.01rem;
-  border-radius:5px;
-  min-height:500px;
+  border-radius: 5px;
+  min-height: 500px;
   line-height: 1.5;
 }
 .rich-text-editor p {
@@ -143,12 +141,10 @@ article.rich-text-editor {
 .rich-text-editor p:first-child {
   margin-top: 0;
 }
-
 #title,
 #output {
   display: none;
 }
-
 #article-tools a:link,
 #article-tools a:visited,
 #article-tools a:hover,
@@ -157,5 +153,5 @@ article.rich-text-editor {
 #toolbar a:visited,
 #toolbar a:hover,
 #toolbar a:active {
-  text-decoration:none;
+  text-decoration: none;
 }

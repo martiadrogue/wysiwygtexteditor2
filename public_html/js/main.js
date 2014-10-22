@@ -3,14 +3,23 @@ Big Thanks To:
 https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla#Executing_Commands
 */
 
-$( document ).ready(function(){
+$(document).ready(function() {
   $('div[contenteditable="true"]').focus();
+  setTimeout(function() {
+    var sel = getSelection();
+    var activeObj = document.activeElement;
+    if (activeObj != 'ARTICLE') {
+      $('#toolbar').addClass('hidden');
+    } else if (activeObj == 'ARTICLE' && sel.isCollapsed) {
+      $('#toolbar').addClass('hidden');
+    }
+  }, 2000);
 });
 
 $('#toolbar a').click(function(e) {
   var role = $(this).data('role');
 
-  switch(role) {
+  switch (role) {
     case 'p':
       document.execCommand('formatBlock', false, role);
       break;
@@ -20,14 +29,14 @@ $('#toolbar a').click(function(e) {
     case 'InsertOrderedList':
       document.execCommand(role, false, 'newOL');
       break;
-      case 'CreateLink':
-        var linkUrl = prompt('Enter the URL fot this link: ', 'http://');
-        if (linkUrl !== '') {
-          document.execCommand(role, false, linkUrl);
-        } else {
-          document.execCommand('UnLink', false, null);
-        }
-        break;
+    case 'CreateLink':
+      var linkUrl = prompt('Enter the URL fot this link: ', 'http://');
+      if (linkUrl !== '') {
+        document.execCommand(role, false, linkUrl);
+      } else {
+        document.execCommand('UnLink', false, null);
+      }
+      break;
     default:
       document.execCommand(role, false, null);
       break;
@@ -40,7 +49,7 @@ $('#toolbar a').click(function(e) {
 $('#article-tools a').click(function(e) {
   var role = $(this).data('role');
   $('article[contenteditable="true"]').focus();
-  switch(role) {
+  switch (role) {
     case 'insertimage':
       var imgSrc = prompt('Enter image location: ', '');
       imageExists(imgSrc);
@@ -81,16 +90,15 @@ $('article[contenteditable="true"]').keydown(function(e) {
 });
 
 $('article[contenteditable="true"]').focus(function() {
-  setTimeout( function() {
+  setTimeout(function() {
     $("#article-tools a.tool-img").removeClass('disabled');
   }, 100);
 });
 $('article[contenteditable="true"]').focusout(function() {
-  setTimeout( function() {
+  setTimeout(function() {
     var hasFocus = $("#article-tools a.tool-img").is(":focus");
     hasFocus = hasFocus || $("#article-tools a.tool-img i").is(":focus");
-    console.log(hasFocus);
-    if(!hasFocus) {
+    if (!hasFocus) {
       $("#article-tools a.tool-img").addClass('disabled');
     }
   }, 100);
@@ -106,7 +114,7 @@ $('div[contenteditable="true"]').keydown(function(e) {
 /**
  * http://www.albertmartin.de/blog/code.php/20/plain-text-paste-with-javascript
  */
-$('[contenteditable="true"]').bind('paste',function(e) {
+$('[contenteditable="true"]').bind('paste', function(e) {
   var id = $(this).attr('id');
   cleanAndPaste(id);
 });
@@ -119,7 +127,7 @@ function update_title() {
   $('#title').val($('h1[contenteditable="true"]').html());
 }
 
-$('[contenteditable="true"]').on('drop',function(e) {
+$('[contenteditable="true"]').on('drop', function(e) {
   e.preventDefault();
   var dt = e.originalEvent.dataTransfer;
   var text = dt.getData('text/plain');
@@ -130,7 +138,7 @@ $('[contenteditable="true"]').on('drop',function(e) {
 
 $(this).mouseup(function(e) {
   var nodeName = e.target.nodeName;
-  if(nodeName != 'ARTICLE') {
+  if (nodeName != 'ARTICLE') {
     $('#toolbar').addClass('hidden');
   }
 });
@@ -140,41 +148,42 @@ $('article[contenteditable="true"]').mouseup(function() {
 });
 
 function switchToolbar() {
-  setTimeout( function() {
+  setTimeout(function() {
     var sel = getSelection();
-    if(!sel.isCollapsed){
+    if (!sel.isCollapsed) {
       $('#toolbar').removeClass('hidden');
     } else {
       $('#toolbar').addClass('hidden');
     }
   }, 1);
 }
+
 function cleanAndPaste(id) {
   var editor = document.getElementById(id);
   // get content before paste
   var before = editor.innerHTML;
-  setTimeout(function(){
+  setTimeout(function() {
     // get content after paste by a 100ms delay
     var after = editor.innerHTML;
     // find the start and end position where the two differ
     var pos1 = -1;
     var pos2 = -1;
-    for (var i=0; i<after.length; i++) {
+    for (var i = 0; i < after.length; i++) {
       if (pos1 == -1 && before.substr(i, 1) != after.substr(i, 1)) pos1 = i;
-      if (pos2 == -1 && before.substr(before.length-i-1, 1) != after.substr(after.length-i-1, 1)) pos2 = i;
+      if (pos2 == -1 && before.substr(before.length - i - 1, 1) != after.substr(after.length - i - 1, 1)) pos2 = i;
     }
     // the difference = pasted string with HTML:
-    var pasted = after.substr(pos1, after.length-pos2-pos1);
+    var pasted = after.substr(pos1, after.length - pos2 - pos1);
     // strip the tags:
     var replace = pasted.replace(/<[^>]+>/g, '');
     // build clean content:
-    var replaced = after.substr(0, pos1)+replace+after.substr(pos1+pasted.length);
+    var replaced = after.substr(0, pos1) + replace + after.substr(pos1 + pasted.length);
     // replace the HTML mess with the plain content
     editor.innerHTML = replaced;
   }, 100);
 }
 
-function imageExists(url){
+function imageExists(url) {
   var img = new Image();
   img.onload = function() {
     // code to set the src on success
@@ -183,5 +192,4 @@ function imageExists(url){
     alert("Path not accessible!");
   };
   img.src = url;
-  console.log("height img: " + img.height);
 }
